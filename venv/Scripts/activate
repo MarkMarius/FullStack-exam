@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\OMEN\Desktop\Galutinis\venv"
+VIRTUAL_ENV="G:\Code Academy\Flask\14 paskaita Programos stuktūrizavimas, venv kūrimas ir dieigmo į serverį pradžia\code academy\peticiju uzduoties strukturizavimas\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
