@@ -177,12 +177,3 @@ def account(user_id):
         form.email.data = current_user.email
 
     return render_template('account.html', title="Account", form=form)
-
-
-
-
-
-
-
-
-

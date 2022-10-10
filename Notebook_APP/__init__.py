@@ -11,10 +11,10 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'qwqedfdfgwergrwgewrggewgwegwegwegew'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 UPLOAD_FOLDER = os.path.join('static', 'notes_images')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-basedir = os.path.abspath(os.path.dirname(__file__))
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
     os.path.join(basedir, 'data.sqlite')

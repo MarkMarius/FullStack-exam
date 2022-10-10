@@ -17,26 +17,26 @@ db = SQLAlchemy(metadata=metadata)
 
 
 class User(db.Model, UserMixin):
-	id = db.Column(db.Integer, primary_key=True)
-	username = db.Column(db.String(20), unique=True, nullable=False)
-	email = db.Column(db.String(100), unique=True, nullable=False)
-	password = db.Column(db.Integer, nullable=False)
-	registered_date = db.Column(db.DateTime, default=datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.Integer, nullable=False)
+    registered_date = db.Column(db.DateTime, default=datetime.utcnow)
 
-	notes = db.relationship('Notes', backref="author", lazy=True)
-	categories = db.relationship('Categories', backref="category_author", lazy=True)
+    notes = db.relationship('Notes', backref="author", lazy=True)
+    categories = db.relationship('Categories', backref="category_author", lazy=True)
 
-	def __repr__(self):
-		return f"{self.username}"
+    def __repr__(self):
+        return f"{self.username}"
 
 class Categories(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	categories_name = db.Column(db.String(100), nullable=False)
-	date_added = db.Column(db.DateTime, default=datetime.utcnow)
-	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    categories_name = db.Column(db.String(100), nullable=False)
+    date_added = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-	def __repr__(self):
-		return f"Categories('{ self.categories_name }')"
+    def __repr__(self):
+        return f"Categories('{ self.categories_name }')"
 
 class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
