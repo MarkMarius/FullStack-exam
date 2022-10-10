@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <form action="/search" method="POST">
+        <div class="search_container">
+            <div class="form-group">
+                <input class="form-control form-control-lg" type="text" name="searched_category" placeholder="Search by title category">
+            </div>
+            <input class="btn mt-2 add_category mb-4" type="submit" value="SEARCH">
+        </div>
+    </form>
+</div>
+
+<h1>Results</h1>
+
+<div>
+    {% for category in categories %}
+        <p>{{ category }}</p>
+        {% for note in notes %}
+            <p>{{ note }}</p>
+        {% endfor %}
+    {% endfor %}    
+</div>
+
+{% endblock content %}

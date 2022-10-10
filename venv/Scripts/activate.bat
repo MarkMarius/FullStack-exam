@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\OMEN\Desktop\Galutinis\venv
+set VIRTUAL_ENV=G:\Code Academy\Flask\14 paskaita Programos stuktūrizavimas, venv kūrimas ir dieigmo į serverį pradžia\code academy\peticiju uzduoties strukturizavimas\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
