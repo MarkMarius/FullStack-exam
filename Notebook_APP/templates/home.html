@@ -38,7 +38,7 @@
 </div>
 <div class="my__container main">
     <div class='content-section mb-5'>
-        <form action="" method='POST'>
+        <form action="" method='POST' enctype="multipart/form-data">
             <fieldset class='form-group'>
                 <div class='form-group'>
                     <label class="form-control-label ff__indie_flower fs__2rem mb-2">Category</label>
@@ -55,6 +55,15 @@
                 <div class='form-group mt-4'>
                     <label class="form-control-label ff__indie_flower fs__2rem mb-2">Notes</label>
                     <textarea name="notes" class="form-control form-control-lg form__notes_input" required="true"></textarea>
+                </div>
+                <div class="form-group">
+                    {{ form.image.label(class ="form-control-label ff__indie_flower fs__2rem mb-2") }}
+                    {{ form.image(class="form-control-file") }}
+                    {% if form.image.errors %}
+                        {% for error in form.image.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </fieldset>
             <input type="submit" value="SAVE" class="btn btn-outline-info ff__patrick_hand btn__size">
@@ -81,6 +90,13 @@
                     <div>
                         <p class="card-text font-weight-light article-content note__content">{{ note.notes }}</p>
                     </div>
+                </div>
+                <div class="form-group">
+                    {% if image %}
+                    <div>
+                        <p class="form-control-file">{{ note.image }}</p>
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="footer__btn">
                     <a href="{{url_for('delete_note', note_id=note.id)}}"><button type="button"
