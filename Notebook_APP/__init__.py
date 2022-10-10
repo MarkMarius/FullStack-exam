@@ -7,9 +7,12 @@ from notebook_app.models import User
 from notebook_app.models import db
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'qwqedfdfgwergrwgewrggewgwegwegwegew'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+UPLOAD_FOLDER = os.path.join('static', 'notes_images')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

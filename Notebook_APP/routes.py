@@ -1,3 +1,4 @@
+from email.mime import image
 from notebook_app import app, db, bcrypt
 from notebook_app.models import User, Notes, Categories
 from notebook_app.forms import RegistrationForm, LoginForm, UpdateAccountForm, UpdateNoteForm, NewCategoryForm, SearchForm
@@ -49,7 +50,7 @@ def home():
             db.session.add(note)
             db.session.commit()
             return redirect(url_for('home'))
-    return render_template('home.html', notes=notes, users_categories=users_categories, form=form, superuser=a_current_user(), title='Summary-Notebook')
+    return render_template('home.html', notes=notes, users_categories=users_categories, image=image, form=form, superuser=a_current_user(), title='Summary-Notebook')
 
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -78,12 +79,14 @@ def update(note_id):
         if (categories and notes):
             note.categories = form.category.data
             note.notes = form.notes.data
+            note.image = form.image.data
             db.session.commit()
             flash("Note updated successfull", "success")
             return redirect(url_for('home'))
     elif request.method == 'GET':
         form.category.data = note.categories
         form.notes.data = note.notes
+        form.image.data = note.image
     return render_template('update.html', note=note, title="Update", form=form)
 
 

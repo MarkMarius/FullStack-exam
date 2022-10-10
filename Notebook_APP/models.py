@@ -42,6 +42,7 @@ class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     categories = db.Column(db.String(100), nullable=False)
     notes = db.Column(db.Text, nullable=False)
+    image = db.Column(db.String(20), nullable=True)	
     date_saved = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     
